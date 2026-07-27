@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-bone text-ink font-body;
+  }
+  ::selection {
+    @apply bg-gold/30 text-ink;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), sans-serif;
+    letter-spacing: 0.01em;
+  }
+  .eyebrow {
+    font-family: var(--font-display), sans-serif;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-line rounded-full;
+  }
+  .perforation {
+    background-image: repeating-linear-gradient(
+      to right,
+      theme("colors.paper") 0 6px,
+      transparent 6px 12px
+    );
+  }
+}
