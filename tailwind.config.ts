@@ -25,6 +25,9 @@ const config: Config = {
           red: "#A6362B",
           "red-deep": "#7A2620",
           "red-soft": "#F7E9E7",
+          blue: "#2C5AA0",
+          "blue-deep": "#1E3F73",
+          "blue-soft": "#E8EEF7",
         },
       },
       fontFamily: {

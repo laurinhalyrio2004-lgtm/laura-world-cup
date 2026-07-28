@@ -43,6 +43,7 @@ export default async function ConvitePage({ params }: { params: { slug: string }
   return (
     <div className="min-h-screen bg-ink text-paper">
       <div className="max-w-md mx-auto px-5 py-10 sm:py-14">
+        {/* Hero */}
         <div className="text-center mb-10 animate-rise">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Trophy size={16} className="text-gold" />
@@ -58,17 +59,19 @@ export default async function ConvitePage({ params }: { params: { slug: string }
           <p className="eyebrow text-xs text-white/40 mt-2">Chapter 22</p>
         </div>
 
+        {/* Credential */}
         <div className="animate-rise" style={{ animationDelay: "100ms" }}>
           <Credential guest={guest} />
         </div>
 
+        {/* Event details */}
         <div className="mt-10 animate-rise" style={{ animationDelay: "160ms" }}>
           <SectionCard title="Detalhes da Partida" icon={Calendar}>
             <InfoRow icon={Calendar} label="Data" value={config ? formatDatePretty(config.event_date) : "A definir"} />
             <InfoRow icon={Clock} label="Horário" value={config?.event_time ?? "A definir"} />
             <InfoRow icon={MapPin} label="Endereço" value={config?.address ?? "A definir"} />
             {config?.notes && <p className="text-xs mt-3 leading-relaxed text-white/50">{config.notes}</p>}
-            
+            <a
               href={mapHref}
               target="_blank"
               rel="noreferrer"
@@ -79,12 +82,15 @@ export default async function ConvitePage({ params }: { params: { slug: string }
           </SectionCard>
         </div>
 
+        {/* Team reveal */}
         <TeamRevealCard team={guest.team} />
 
+        {/* Confirm */}
         <div className="mt-8">
           <ConfirmSection guest={guest} />
         </div>
 
+        {/* Regulamento */}
         <div className="mt-8">
           <SectionCard title="Regulamento do Campeonato" icon={Award}>
             <ul className="flex flex-col gap-3">

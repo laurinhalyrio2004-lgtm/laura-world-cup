@@ -1,6 +1,6 @@
 import type { Team } from "@/types";
 
-const TEAM_CONFIG: Record
+const TEAM_CONFIG: Record<
   Team,
   { emoji: string; label: string; color: string; colorClass: string }
 > = {
