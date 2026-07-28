@@ -1,6 +1,6 @@
 import type { Team } from "@/types";
 
-const TEAM_CONFIG: Record<
+const TEAM_CONFIG: Record
   Team,
   { emoji: string; label: string; color: string; colorClass: string }
 > = {
@@ -16,11 +16,17 @@ const TEAM_CONFIG: Record<
     color: "#A6362B",
     colorClass: "text-team-red-deep",
   },
+  azul: {
+    emoji: "🟦",
+    label: "EQUIPE AZUL",
+    color: "#2C5AA0",
+    colorClass: "text-team-blue-deep",
+  },
 };
 
 export function TeamRevealCard({ team }: { team: Team }) {
   const config = TEAM_CONFIG[team];
-  const colorName = team === "verde" ? "verde" : "vermelha";
+  const colorName = team === "verde" ? "verde" : team === "vermelho" ? "vermelha" : "azul";
 
   return (
     <div

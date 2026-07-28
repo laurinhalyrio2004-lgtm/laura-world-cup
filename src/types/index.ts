@@ -1,4 +1,4 @@
-export type Team = "verde" | "vermelho";
+export type Team = "verde" | "vermelho" | "azul";
 
 export type GuestStatus = "convocado" | "confirmado";
 
@@ -41,5 +41,6 @@ export interface GuestStats {
   pending: number;
   green: number;
   red: number;
+  blue: number;
   confirmationRate: number; // 0-100
 }

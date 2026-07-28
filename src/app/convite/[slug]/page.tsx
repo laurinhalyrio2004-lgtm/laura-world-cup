@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { unstable_noStore as noStore } from "next/cache";
 import { Calendar, Clock, MapPin, Award, ChevronRight, Trophy } from "lucide-react";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { Credential } from "@/components/guest/Credential";
@@ -25,7 +24,6 @@ async function getGuestAndConfig(slug: string) {
 }
 
 export default async function ConvitePage({ params }: { params: { slug: string } }) {
-  noStore();
   const { guest, config } = await getGuestAndConfig(params.slug);
 
   if (!guest) {

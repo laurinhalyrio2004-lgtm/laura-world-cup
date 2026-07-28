@@ -15,6 +15,11 @@ interface GuestFormModalProps {
 export function GuestFormModal({ open, onClose, onSubmit, initialGuest }: GuestFormModalProps) {
   const [name, setName] = useState("");
   const [team, setTeam] = useState<Team>("verde");
+  const TEAM_OPTIONS: { value: Team; label: string; activeClass: string }[] = [
+    { value: "verde", label: "🟩 Verde", activeClass: "border-team-green bg-team-green-soft text-team-green-deep" },
+    { value: "vermelho", label: "🟥 Vermelho", activeClass: "border-team-red bg-team-red-soft text-team-red-deep" },
+    { value: "azul", label: "🟦 Azul", activeClass: "border-team-blue bg-team-blue-soft text-team-blue-deep" },
+  ];
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -70,21 +75,17 @@ export function GuestFormModal({ open, onClose, onSubmit, initialGuest }: GuestF
 
           <div className="flex flex-col gap-2">
             <span className="eyebrow text-[10px] text-slate">Equipe</span>
-            <div className="grid grid-cols-2 gap-2">
-              {(["verde", "vermelho"] as Team[]).map((option) => (
+            <div className="grid grid-cols-3 gap-2">
+              {TEAM_OPTIONS.map((option) => (
                 <button
                   type="button"
-                  key={option}
-                  onClick={() => setTeam(option)}
-                  className={`rounded-xl border px-3 py-2.5 text-sm font-semibold transition-colors ${
-                    team === option
-                      ? option === "verde"
-                        ? "border-team-green bg-team-green-soft text-team-green-deep"
-                        : "border-team-red bg-team-red-soft text-team-red-deep"
-                      : "border-line text-slate hover:bg-bone"
+                  key={option.value}
+                  onClick={() => setTeam(option.value)}
+                  className={`rounded-xl border px-2 py-2.5 text-xs sm:text-sm font-semibold transition-colors ${
+                    team === option.value ? option.activeClass : "border-line text-slate hover:bg-bone"
                   }`}
                 >
-                  {option === "verde" ? "🟩 Verde" : "🟥 Vermelho"}
+                  {option.label}
                 </button>
               ))}
             </div>

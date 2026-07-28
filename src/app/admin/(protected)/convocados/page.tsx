@@ -46,7 +46,9 @@ export default function ConvocadosPage() {
   }
 
   async function handleSwitchTeam(guest: Guest) {
-    await updateGuest(guest.slug, { team: guest.team === "verde" ? "vermelho" : "verde" });
+    const order: Guest["team"][] = ["verde", "vermelho", "azul"];
+    const next = order[(order.indexOf(guest.team) + 1) % order.length];
+    await updateGuest(guest.slug, { team: next });
   }
 
   return (

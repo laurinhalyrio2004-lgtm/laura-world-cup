@@ -40,7 +40,7 @@ export default function DashboardPage() {
             <ProgressBar value={stats.confirmationRate} />
           </Card>
 
-          <div className="grid sm:grid-cols-2 gap-4 mt-6">
+          <div className="grid sm:grid-cols-3 gap-4 mt-6">
             <Card className="flex items-center justify-between">
               <div>
                 <div className="eyebrow text-[10px] text-slate mb-1">Time Verde</div>
@@ -54,6 +54,13 @@ export default function DashboardPage() {
                 <div className="font-display text-3xl font-semibold text-team-red-deep">{stats.red}</div>
               </div>
               <span className="text-4xl">🟥</span>
+            </Card>
+            <Card className="flex items-center justify-between">
+              <div>
+                <div className="eyebrow text-[10px] text-slate mb-1">Time Azul</div>
+                <div className="font-display text-3xl font-semibold text-team-blue-deep">{stats.blue}</div>
+              </div>
+              <span className="text-4xl">🟦</span>
             </Card>
           </div>
         </>

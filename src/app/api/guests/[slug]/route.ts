@@ -5,7 +5,7 @@ import { requestIsAdmin } from "@/lib/auth";
 
 const updateSchema = z.object({
   name: z.string().trim().min(2).optional(),
-  team: z.enum(["verde", "vermelho"]).optional(),
+  team: z.enum(["verde", "vermelho", "azul"]).optional(),
 });
 
 /**

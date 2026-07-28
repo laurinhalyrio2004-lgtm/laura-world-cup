@@ -8,6 +8,7 @@ export default function EquipesPage() {
   const { guests, loading } = useGuests();
   const green = guests.filter((g) => g.team === "verde");
   const red = guests.filter((g) => g.team === "vermelho");
+  const blue = guests.filter((g) => g.team === "azul");
 
   return (
     <div className="max-w-5xl">
@@ -18,23 +19,26 @@ export default function EquipesPage() {
       </header>
 
       {loading ? (
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-3 gap-4">
+          <div className="h-96 rounded-2xl bg-line/40 animate-pulse" />
           <div className="h-96 rounded-2xl bg-line/40 animate-pulse" />
           <div className="h-96 rounded-2xl bg-line/40 animate-pulse" />
         </div>
       ) : (
-        <div className="grid sm:grid-cols-2 gap-4">
+        <div className="grid sm:grid-cols-3 gap-4">
           <TeamRoster title="Equipe Verde" emoji="🟩" color="team-green" guests={green} />
           <TeamRoster title="Equipe Vermelha" emoji="🟥" color="team-red" guests={red} />
+          <TeamRoster title="Equipe Azul" emoji="🟦" color="team-blue" guests={blue} />
         </div>
       )}
     </div>
   );
 }
 
-const TITLE_COLOR: Record<"team-green" | "team-red", string> = {
+const TITLE_COLOR: Record<"team-green" | "team-red" | "team-blue", string> = {
   "team-green": "text-team-green-deep",
   "team-red": "text-team-red-deep",
+  "team-blue": "text-team-blue-deep",
 };
 
 function TeamRoster({
@@ -45,7 +49,7 @@ function TeamRoster({
 }: {
   title: string;
   emoji: string;
-  color: "team-green" | "team-red";
+  color: "team-green" | "team-red" | "team-blue";
   guests: { id: string; name: string; status: "confirmado" | "convocado" }[];
 }) {
   return (

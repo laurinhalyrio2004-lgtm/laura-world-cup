@@ -36,12 +36,14 @@ export function computeStats(guests: Guest[]): GuestStats {
   const confirmed = guests.filter((g) => g.status === "confirmado").length;
   const green = guests.filter((g) => g.team === "verde").length;
   const red = guests.filter((g) => g.team === "vermelho").length;
+  const blue = guests.filter((g) => g.team === "azul").length;
   return {
     total,
     confirmed,
     pending: total - confirmed,
     green,
     red,
+    blue,
     confirmationRate: total === 0 ? 0 : Math.round((confirmed / total) * 100),
   };
 }

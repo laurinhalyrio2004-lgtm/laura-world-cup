@@ -6,7 +6,7 @@ import { uniqueSlug } from "@/lib/utils";
 
 const createSchema = z.object({
   name: z.string().trim().min(2, "Informe o nome completo do convidado."),
-  team: z.enum(["verde", "vermelho"]),
+  team: z.enum(["verde", "vermelho", "azul"]),
 });
 
 export async function GET(request: NextRequest) {

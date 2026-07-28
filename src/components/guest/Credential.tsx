@@ -5,6 +5,7 @@ import type { Guest } from "@/types";
 const TEAM_COLOR = {
   verde: { base: "#1E7A4C", deep: "#14532D" },
   vermelho: { base: "#A6362B", deep: "#7A2620" },
+  azul: { base: "#2C5AA0", deep: "#1E3F73" },
 };
 
 export function Credential({ guest }: { guest: Guest }) {

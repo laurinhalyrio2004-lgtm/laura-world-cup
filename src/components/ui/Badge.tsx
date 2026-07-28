@@ -4,11 +4,13 @@ import type { Team, GuestStatus } from "@/types";
 const teamStyles: Record<Team, string> = {
   verde: "bg-team-green-soft text-team-green-deep border-team-green/30",
   vermelho: "bg-team-red-soft text-team-red-deep border-team-red/30",
+  azul: "bg-team-blue-soft text-team-blue-deep border-team-blue/30",
 };
 
 const teamLabel: Record<Team, string> = {
   verde: "Equipe Verde",
   vermelho: "Equipe Vermelha",
+  azul: "Equipe Azul",
 };
 
 export function TeamBadge({ team, className }: { team: Team; className?: string }) {
@@ -20,7 +22,12 @@ export function TeamBadge({ team, className }: { team: Team; className?: string 
         className
       )}
     >
-      <span className={cn("h-1.5 w-1.5 rounded-full", team === "verde" ? "bg-team-green" : "bg-team-red")} />
+      <span
+        className={cn(
+          "h-1.5 w-1.5 rounded-full",
+          team === "verde" ? "bg-team-green" : team === "vermelho" ? "bg-team-red" : "bg-team-blue"
+        )}
+      />
       {teamLabel[team]}
     </span>
   );
