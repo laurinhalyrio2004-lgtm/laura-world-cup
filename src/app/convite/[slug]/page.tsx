@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { unstable_noStore as noStore } from "next/cache";
 import { Calendar, Clock, MapPin, Award, ChevronRight, Trophy } from "lucide-react";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { Credential } from "@/components/guest/Credential";
@@ -9,6 +10,8 @@ import { formatDatePretty, mapUrlFor } from "@/lib/utils";
 import type { EventConfig, Guest } from "@/types";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
 
 async function getGuestAndConfig(slug: string) {
   const supabase = createAdminClient();
@@ -22,6 +25,7 @@ async function getGuestAndConfig(slug: string) {
 }
 
 export default async function ConvitePage({ params }: { params: { slug: string } }) {
+  noStore();
   const { guest, config } = await getGuestAndConfig(params.slug);
 
   if (!guest) {
@@ -69,7 +73,7 @@ export default async function ConvitePage({ params }: { params: { slug: string }
             <InfoRow icon={Clock} label="Horário" value={config?.event_time ?? "A definir"} />
             <InfoRow icon={MapPin} label="Endereço" value={config?.address ?? "A definir"} />
             {config?.notes && <p className="text-xs mt-3 leading-relaxed text-white/50">{config.notes}</p>}
-            <a
+            
               href={mapHref}
               target="_blank"
               rel="noreferrer"
